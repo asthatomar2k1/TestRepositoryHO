@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/asthatomar2k1/TestRepositoryHO.git'
+            }
+        }
+        stage('Run JMeter Test') {
+            steps {
+                sh 'jmeter -n -t JpetScript.jmx -l result.jtl'
+            }
+        }
+    }
+}
